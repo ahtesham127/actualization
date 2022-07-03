@@ -1,0 +1,29 @@
+.bg{
+    background-image: url('/public/bg.png');
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  header {
+    text-align: center;
+  }
+
+  .section {
+    height: 100vh !important;
+  }
+  header a {
+    color:#707070;
+    width: 260px;
+    font-size: 26px;
+    width: 220px;
+    display: inline-block;
+    text-decoration: none;
+    padding-top: 10px;
+  }
+
+  header a.active{
+    color:#fff;
+    border-top: 10px solid #fff;
+  }

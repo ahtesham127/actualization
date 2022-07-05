@@ -18,6 +18,7 @@ const Main = () => {
     arrowNavigation: true,
     autoScrolling: false,
 	scrollHorizontally: false,
+    navigationPosition: 'right',
   };
 
   return (

@@ -6,16 +6,22 @@ body {
   background-position: center;
   background-attachment: fixed;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Montserrat', sans-serif;
 }
-
+#root {
+  width: 100%;
+}
 header {
   text-align: center;
   position: fixed;
   width: 100%;
   height: 60px;
+  top: 0;
+  font-family: 'Open Sans', sans-serif;
 }
-
-
 
 header span {
   color: #707070;
@@ -48,23 +54,25 @@ header span.active {
   box-shadow: inset 0 0 4px rgb(255 250 250);
   background-color: #ffffff;
 }
-
-.ourServices{
-    height: 84vh;
-    overflow: auto;
-    color: #fff;
-    padding: 0 30px;
-    display: flex;
-    align-items: center;
+.mainContainer {
+  max-width: 90%;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+.ourServices {
+  height: 80vh;
+  overflow: auto;
+  color: #fff;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.mainContainer{
-    max-width: 80%;
-    width: 100%;
-    margin: 0 auto;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: 60px;
-   
+
+.ourServices  h1{
+    font-size: 96px;
+    font-weight: 500;
+    letter-spacing: 1px;
 }

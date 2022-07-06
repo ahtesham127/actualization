@@ -32,7 +32,7 @@ const Main = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <header>
         {pageArray?.map((item, i) => {
           return (
@@ -48,7 +48,7 @@ const Main = () => {
       </header>
 
       <div className="mainContainer">{activeComponent[state.activeMenu]}</div>
-    </div>
+    </>
   );
 };
 

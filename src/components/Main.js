@@ -4,7 +4,9 @@ import "../styles/main.css";
 import OurServices from "./OurServices";
 import Section from "./Section";
 import mouseImage from "../assets/Mouse.svg"
+import logo from "../assets/logo.png"
 import Info from "./Info";
+
 const Main = () => {
   const [state, setState] = useState({
     scroll: true,
@@ -35,6 +37,10 @@ const Main = () => {
   return (
     <>
       <header>
+        <div className="logo">
+        <img src={logo}/>
+        </div>
+    
         {pageArray?.map((item, i) => {
           return (
             <span

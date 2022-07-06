@@ -13,6 +13,7 @@ body {
 }
 #root {
   width: 100%;
+  padding: 0 15px;
 }
 header {
   text-align: center;
@@ -20,6 +21,8 @@ header {
   width: 100%;
   height: 60px;
   top: 0;
+
+
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -37,7 +40,11 @@ header span.active {
   color: #fff;
   border-top: 10px solid #fff;
 }
-
+header .logo{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+}
 .ourServices::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
   border-radius: 8px;
@@ -59,12 +66,13 @@ header span.active {
   width: 100%;
   margin: 0 auto;
   padding-top: 60px;
+  position: relative;
 }
 .ourServices {
   height: 80vh;
   overflow: auto;
   color: #fff;
-  padding: 0 40px;
+  padding: 0 35px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,8 +97,14 @@ header span.active {
     background-image: url("/public/bg_logo.png");
    
     background-repeat: no-repeat;
-    background-size: cover;
+ 
     background-position: center;
-    background-attachment: fixed;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+
+
    
 }

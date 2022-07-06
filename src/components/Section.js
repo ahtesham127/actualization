@@ -2,7 +2,10 @@ import React from 'react'
 
 const Section = ({content}) => {
   return (
-    <div>{content}</div>
+    <div className=''>
+        {content}
+    
+    </div>
   )
 }
 

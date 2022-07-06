@@ -3,7 +3,8 @@ import { Header, Footer } from "react-fullpage";
 import "../styles/main.css";
 import OurServices from "./OurServices";
 import Section from "./Section";
-
+import mouseImage from "../assets/Mouse.svg"
+import Info from "./Info";
 const Main = () => {
   const [state, setState] = useState({
     scroll: true,
@@ -18,7 +19,7 @@ const Main = () => {
   };
 
   const activeComponent = {
-    "Info": <Section content={"Info"} />,
+    "Info": <Info/>,
     "Our Services": <OurServices />,
     "About Us": <Section content={"About"} />,
     "Contact": <Section content={"Contact"} />,
@@ -47,7 +48,10 @@ const Main = () => {
         })}
       </header>
 
-      <div className="mainContainer">{activeComponent[state.activeMenu]}</div>
+      <div className="mainContainer">
+        {activeComponent[state.activeMenu]}
+        <img src={mouseImage}  className="mousePointer"/>
+      </div>
     </>
   );
 };

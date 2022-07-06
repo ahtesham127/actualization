@@ -76,3 +76,21 @@ header span.active {
     font-weight: 500;
     letter-spacing: 1px;
 }
+
+
+.mousePointer{
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.info{
+    background-image: url("/public/bg_logo.png");
+   
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+   
+}

@@ -69,11 +69,16 @@ header .logo{
   position: relative;
 }
 .ourServices {
-  height: 80vh;
   overflow: auto;
   overflow-x: hidden;
   color: #fff;
-  padding: 0 35px;
+  padding: 0 35px 0 25px;
+  -webkit-transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  display: block;
+
+
   /* display: flex;
   align-items: center;
   justify-content: center; */
@@ -115,7 +120,8 @@ header .logo{
 .sections{
   width: 100%;
   text-align: center;
-  position: relative;
+  /* position: absolute;
+  top: 100%; */
 }
 
 .tabletimg{
@@ -124,6 +130,10 @@ header .logo{
     right: 0;
     top: 0;
     margin-left: -350px;
+}
+
+.mobileimg{
+  margin-left: -240px; 
 }
 
 .sections.active .tabletimg{
@@ -137,26 +147,122 @@ header .logo{
 	}
 	
 	75%, 100% {
-		transform: scale(1);
+		transform: scale(.8);
 	}
 }
+
+.title1{
+  position: absolute;
+    left: 50%;
+    opacity: 0;
+    margin-left: -260px;
+}
+
+.title1 h1{
+  display: inline;
+}
+
+.sections.active .title1{
+	animation: grows 4s linear forwards;
+	opacity: 1;
+}
+
+.sections.active .title1 h1{
+  font-size: 70px;
+  margin-top: 0;
+}
+
+@keyframes grows {
+	0%, 20% {
+		transform: scale(2);
+    bottom:-100%;
+	}
+	
+	75%, 100% {
+		transform: scale(.8);
+    bottom:72%;
+	}
+}
+
+.smartimg_Inner{
+  margin-left: -500px;
+}
+
+.smartimg{
+  margin: 0;
+}
+
+.sections.active .smartimg{
+  animation: grown 4s linear forwards; 
+}
+
+@keyframes grown {
+	0%, 20% {
+		transform: scale(2);
+    bottom:-100%;
+	}
+	
+	75%, 100% {
+		transform: scale(.2);
+    bottom:85%;
+	}
+}
+
 
 .dairyimg{
   position: absolute;
   transition: all 5s ease;
   right: -420px;
   opacity: 0;
-  bottom: -830px;
+  bottom: 20px;
+  width: 300px;
 }
 
 .sections.active .dairyimg{
   animation: mymove 5s linear;
   transition-delay: 1s;
   /* bottom: -860px; */
-  margin-right: 400px;
+  margin-right: 36%;
   opacity: 1;
   right: 0;
 }
+
+
+.blocksection.page1 {
+  background: gray;
+  /* top: 0;
+  left: 0;
+  position: absolute; */
+}
+
+.blocksection.page2 {
+  background: rgba(255, 255, 0, 0.932);
+  top: 100%;
+  left: 0;
+  position: absolute;
+}
+
+.blocksection.page3 {
+  background: rgb(117, 207, 0);
+  top: 200%;
+  left: 0;
+  position: absolute;
+}
+
+.blocksection.page4 {
+  background: rgb(196, 0, 179);
+  top: 300%;
+  left: 0;
+  position: absolute;
+}
+
+.content .blocksection {
+  width: 100%;
+  height: 100%;
+}
+/* .main section {
+  overflow: hidden;
+} */
 
 /* @keyframes mymove {
   from {left: 0px;}

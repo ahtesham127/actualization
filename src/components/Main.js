@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Header, Footer } from "react-fullpage";
+import React, { useEffect, useState, useRef } from "react";
 import "../styles/main.css";
 import OurServices from "./OurServices";
-import Section from "./Section";
-import mouseImage from "../assets/Mouse.svg"
-import logo from "../assets/logo.png"
+import mouseImage from "../assets/Mouse.svg";
+import logo from "../assets/logo.png";
 import Info from "./Info";
+import Contact from "./Contact";
+import About from "./About";
+import { LoaderData } from "./LoaderData";
 
 const Main = () => {
   const [state, setState] = useState({
     scroll: true,
     activeMenu: "Info",
+    isLoading: true,
   });
 
   const setMenu = (value) => {
@@ -21,26 +23,34 @@ const Main = () => {
   };
 
   const activeComponent = {
-    "Info": <Info/>,
+    Info: <Info />,
     "Our Services": <OurServices />,
-    "About Us": <Section content={"About"} />,
-    "Contact": <Section content={"Contact"} />,
+    "About Us": <About />,
+    Contact: <Contact />,
   };
- let pageArray = ["Info", "Our Services", "About Us", "Contact"];
+  let pageArray = ["Info", "Our Services", "About Us", "Contact"];
+
   useEffect(() => {
     setState((pre) => ({
       ...pre,
       activeMenu: "Info",
     }));
+
+    setTimeout(() => {
+      setState((pre) => ({
+        ...pre,
+        isLoading: false,
+      }));
+    }, 5000);
   }, []);
 
-  return (
+  return !state.isLoading ? (
     <>
       <header>
         <div className="logo">
-        <img src={logo}/>
+          <img src={logo} />
         </div>
-    
+
         {pageArray?.map((item, i) => {
           return (
             <span
@@ -56,9 +66,11 @@ const Main = () => {
 
       <div className="mainContainer">
         {activeComponent[state.activeMenu]}
-        <img src={mouseImage}  className="mousePointer"/>
+        <img src={mouseImage} className="mousePointer" />
       </div>
     </>
+  ) : (
+    <LoaderData />
   );
 };
 

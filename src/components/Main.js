@@ -13,12 +13,15 @@ const Main = () => {
     scroll: true,
     activeMenu: "Info",
     isLoading: true,
+    sliderCount: 0,
+    viewCount: 1
   });
 
-  const setMenu = (value) => {
+  const setMenu = (value, index) => {
     setState((pre) => ({
       ...pre,
       activeMenu: value,
+      sliderCount: index
     }));
   };
 
@@ -29,6 +32,36 @@ const Main = () => {
     Contact: <Contact />,
   };
   let pageArray = ["Info", "Our Services", "About Us", "Contact"];
+
+  const changeSlider = () => {
+    let elementAll = document.querySelectorAll(".blocksection");
+    if (state.sliderCount == 3) {
+      setState(pre => ({ ...pre, activeMenu: pageArray[0], sliderCount: 0 }))
+    }
+    else if (state.sliderCount == 1) {
+      if (elementAll.length == state.viewCount) {
+        elementAll[0].classList.add('active')
+        setState((pre) => ({
+          ...pre,
+          activeMenu: pageArray[state.sliderCount],
+          sliderCount: state.sliderCount++,
+          viewCount: 1
+        }));
+      }
+      else {
+        elementAll[state.viewCount - 1].classList.remove('active')
+        elementAll[state.viewCount].classList.add('active')
+        setState(pre => ({ ...pre, viewCount: state.viewCount++ }))
+      }
+    }
+    else {
+      setState((pre) => ({
+        ...pre,
+        activeMenu: pageArray[state.sliderCount],
+        sliderCount: state.sliderCount++
+      }));
+    }
+  }
 
   useEffect(() => {
     setState((pre) => ({
@@ -41,7 +74,7 @@ const Main = () => {
         ...pre,
         isLoading: false,
       }));
-    }, 5000);
+    }, 0);
   }, []);
 
   return !state.isLoading ? (
@@ -55,7 +88,7 @@ const Main = () => {
           return (
             <span
               key={i}
-              onClick={() => setMenu(item)}
+              onClick={() => setMenu(item, i)}
               className={`${state.activeMenu === item ? "active" : ""}`}
             >
               {item}
@@ -66,7 +99,7 @@ const Main = () => {
 
       <div className="mainContainer">
         {activeComponent[state.activeMenu]}
-        <img src={mouseImage} className="mousePointer" />
+        <img src={mouseImage} className="mousePointer" onClick={(() => changeSlider())} />
       </div>
     </>
   ) : (

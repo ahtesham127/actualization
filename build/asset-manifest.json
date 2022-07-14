@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/actualization/build/static/css/main.51a6e399.css",
+    "main.css": "/actualization/build/static/css/main.344ebcfc.css",
     "main.js": "/actualization/build/static/js/main.8021f48b.js",
     "static/js/787.343a92ed.chunk.js": "/actualization/build/static/js/787.343a92ed.chunk.js",
     "static/media/bg.png": "/actualization/build/static/media/bg.25109172b4df1273f826.png",
@@ -14,12 +14,12 @@
     "index.html": "/actualization/build/index.html",
     "static/media/Mouse.svg": "/actualization/build/static/media/Mouse.2229eb0605ebc54fa807b98b59eea5a4.svg",
     "static/media/Tablet.svg": "/actualization/build/static/media/Tablet.9659721c666e57e027b0bfeebce80d94.svg",
-    "main.51a6e399.css.map": "/actualization/build/static/css/main.51a6e399.css.map",
+    "main.344ebcfc.css.map": "/actualization/build/static/css/main.344ebcfc.css.map",
     "main.8021f48b.js.map": "/actualization/build/static/js/main.8021f48b.js.map",
     "787.343a92ed.chunk.js.map": "/actualization/build/static/js/787.343a92ed.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.51a6e399.css",
+    "static/css/main.344ebcfc.css",
     "static/js/main.8021f48b.js"
   ]
 }

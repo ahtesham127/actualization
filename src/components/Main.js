@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/main.css";
 import OurServices from "./OurServices";
 import mouseImage from "../assets/Mouse.svg";

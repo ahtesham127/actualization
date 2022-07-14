@@ -2,7 +2,7 @@ import React from 'react'
 import bg_logo from "../assets/bg_logo.png";
 const Info = () => {
   return (
-    <div className='info  '>
+    <div className='info'>
         <img src={bg_logo} className="animate__animated "/>
         <div className='content animate__animated animate__zoomIn'>
             <h2>Actualization</h2>

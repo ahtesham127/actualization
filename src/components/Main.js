@@ -74,7 +74,7 @@ const Main = () => {
         ...pre,
         isLoading: false,
       }));
-    }, 0);
+    }, 5000);
   }, []);
 
   return !state.isLoading ? (

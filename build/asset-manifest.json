@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c7073eb5.css",
+    "main.js": "/static/js/main.39c169de.js",
+    "static/js/787.343a92ed.chunk.js": "/static/js/787.343a92ed.chunk.js",
+    "static/media/bg.png": "/static/media/bg.25109172b4df1273f826.png",
+    "static/media/bg_logo.png": "/static/media/bg_logo.47e27787993a2ac0c795.png",
+    "static/media/Gear.svg": "/static/media/Gear.23679e011fad40da021e584e5316a474.svg",
+    "static/media/Mobile.svg": "/static/media/Mobile.90b87a2be5a84eb1d5ff5eeae64b2011.svg",
+    "static/media/Diary.svg": "/static/media/Diary.32749adf36e2d2fbd5afc65cf9540be8.svg",
+    "static/media/Laptop.svg": "/static/media/Laptop.03e0832b23913f4170ea59a09240930d.svg",
+    "static/media/Magnifying_glass.svg": "/static/media/Magnifying_glass.b1f7e119190e92b8502b8a0e5a276a02.svg",
+    "static/media/Stats.svg": "/static/media/Stats.2100cf8b035d82c6ec0f418d5c7d830a.svg",
+    "index.html": "/index.html",
+    "static/media/Mouse.svg": "/static/media/Mouse.2229eb0605ebc54fa807b98b59eea5a4.svg",
+    "static/media/Tablet.svg": "/static/media/Tablet.9659721c666e57e027b0bfeebce80d94.svg",
+    "main.c7073eb5.css.map": "/static/css/main.c7073eb5.css.map",
+    "main.39c169de.js.map": "/static/js/main.39c169de.js.map",
+    "787.343a92ed.chunk.js.map": "/static/js/787.343a92ed.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c7073eb5.css",
+    "static/js/main.39c169de.js"
+  ]
+}

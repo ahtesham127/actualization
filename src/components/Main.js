@@ -29,20 +29,21 @@ const Main = () => {
     servicesViewRef = val;
   };
   const activeComponent = {
-    Info: <Info />,
+    "Info": <Info />,
     "Our Services": <OurServices updateServices={updateServices} />,
     "About Us": <About />,
-    Contact: <Contact />,
+    "Contact": <Contact />,
   };
   let pageArray = ["Info", "Our Services", "About Us", "Contact"];
 
-  const changeSlider = () => {
-    alert("s")
+  const changeSlider = ()=> {
+   
     let elementAll = document.querySelectorAll(".blocksection");
-    if (state.sliderCount + 1 === pageArray.length) {
+    if (state.sliderCount + 1 == pageArray.length) {
       setState((pre) => ({ ...pre, activeMenu: pageArray[0], sliderCount: 0 }));
-    } else if (pageArray[state.sliderCount] === "Our Services") {
-      if (elementAll.length - 1 === servicesViewRef) {
+    } 
+    else if (pageArray[state.sliderCount] == "Our Services") {
+      if (elementAll.length - 1 == servicesViewRef) {
         elementAll[0].classList.add("active");
         setState((pre) => ({
           ...pre,
@@ -53,7 +54,7 @@ const Main = () => {
       } else {
         servicesViewRef = servicesViewRef + 1;
         for (var i = 0; i < elementAll.length; i++) {
-          if (i === servicesViewRef) {
+          if (i == servicesViewRef) {
             elementAll[i].classList.add("active");
           } else {
             elementAll[i].classList.remove("active");
@@ -67,7 +68,7 @@ const Main = () => {
         sliderCount: pre.sliderCount++,
       }));
     }
-  };
+  }
 
   useEffect(() => {
     setState((pre) => ({

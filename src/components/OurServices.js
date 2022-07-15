@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from "react";
+import React from "react";
 import tablet from "../assets/Tablet.svg";
 import dairy from "../assets/Diary.svg";
 import mobile from "../assets/Mobile.svg";
@@ -7,69 +7,83 @@ import glass from "../assets/Magnifying_glass.svg";
 import gear from "../assets/Gear.svg";
 import stats from "../assets/Stats.svg";
 
-const OurServices = () => {
+const OurServices = ({ updateServices }) => {
 
 
-  const ref1 = useRef(null);
- 
+  // const ref1 = useRef(null);
 
-  function useIsInViewport(ref) {
-    const [isIntersecting, setIsIntersecting] = useState(false);
 
-    const observer = useMemo(
-      () =>
-        new IntersectionObserver(([entry]) =>
-          setIsIntersecting(entry.isIntersecting)
-        ),
-      []
-    );
+  // function useIsInViewport(ref) {
+  //   const [isIntersecting, setIsIntersecting] = useState(false);
 
-    useEffect(() => {
-      observer.observe(ref.current);
+  //   const observer = useMemo(
+  //     () =>
+  //       new IntersectionObserver(([entry]) =>
+  //         setIsIntersecting(entry.isIntersecting)
+  //       ),
+  //     []
+  //   );
 
-      return () => {
-        observer.disconnect();
-      };
-    }, [ref, observer]);
+  //   useEffect(() => {
+  //     observer.observe(ref.current);
 
-    return isIntersecting;
-  }
+  //     return () => {
+  //       observer.disconnect();
+  //     };
+  //   }, [ref, observer]);
 
-  const scrollfun = () => {
-    //element.classList.add("active");
-    // if(isInViewport1){
-    //     const element = ref1.current;
-    //     element.classList.remove("active")
-    //    element.classList.add("active")
-    // }
-    // else if(isInViewport2){
-    //     const element = ref2.current;
-    //     element.classList.remove("active")
-    //     element.classList.add("active");
-    // }
-    // else if(isInViewport3){
-    //     const element = ref3.current;
-    //     element.classList.remove("active")
-    //     element.classList.add("active");
-    // }
-  };
+  //   return isIntersecting;
+  // }
+
+  // const scrollfun = () => {
+  //element.classList.add("active");
+  // if(isInViewport1){
+  //     const element = ref1.current;
+  //     element.classList.remove("active")
+  //    element.classList.add("active")
+  // }
+  // else if(isInViewport2){
+  //     const element = ref2.current;
+  //     element.classList.remove("active")
+  //     element.classList.add("active");
+  // }
+  // else if(isInViewport3){
+  //     const element = ref3.current;
+  //     element.classList.remove("active")
+  //     element.classList.add("active");
+  // }
+  // };
   let sections = document.getElementsByTagName("section");
   // tracks index of current section
-  let currentSectionIndex = 0;
+  let currentSectionIndex = React.useRef(0);
 
-  document.addEventListener("wheel", (e) => {
-    if (e.wheelDeltaY > 0 && currentSectionIndex - 1 >= 0) {
-      // wheel up
-      sections[currentSectionIndex].classList.remove("active");
-      currentSectionIndex--;
-      sections[currentSectionIndex].classList.add("active");
-    } else if (e.wheelDeltaY < 0 && currentSectionIndex + 1 < sections.length) {
-      // wheel down
-      sections[currentSectionIndex].classList.remove("active");
-      currentSectionIndex++;
-      sections[currentSectionIndex].classList.add("active");
-    }
-  });
+  React.useEffect(() => {
+    document.addEventListener("wheel", (e) => {
+      if (e.wheelDeltaY > 0 && currentSectionIndex.current - 1 >= 0) {
+        // wheel up
+        currentSectionIndex.current -= 1;
+        for (let i = 0; i < sections.length; i++) {
+          if (i === currentSectionIndex.current) {
+            sections[i].classList.add("active");
+          } else {
+            sections[i].classList.remove("active");
+          }
+        }
+        updateServices(currentSectionIndex.current)
+      } else if (e.wheelDeltaY < 0 && currentSectionIndex.current + 1 < sections.length) {
+        // wheel down
+        currentSectionIndex.current = currentSectionIndex.current !== sections.length ? currentSectionIndex.current + 1 : currentSectionIndex.current;
+        for (let i = 0; i < sections.length; i++) {
+          if (i === currentSectionIndex.current) {
+            sections[i].classList.add("active");
+          } else {
+            sections[i].classList.remove("active");
+          }
+        }
+        updateServices(currentSectionIndex.current)
+      }
+    });
+  }, [sections,updateServices])
   return (
     <div className="ourServices">
       <div className="content">
@@ -85,10 +99,12 @@ const OurServices = () => {
           <div className="container">
             <div className="sections">
               <img
+                alt=""
                 className="animate__animated animate__zoomIn tabletimg"
                 src={tablet}
               />
               <img
+                alt=""
                 className="animate__animated animate__zoomIn dairyimg"
                 src={dairy}
               />
@@ -103,16 +119,19 @@ const OurServices = () => {
           <div className="container">
             <div className="sections" >
               <img
+                alt=""
                 className="animate__animated animate__zoomIn tabletimg mobileimg"
                 src={mobile}
               />
               <div className="animate__animated animate__zoomIn smartimg">
                 <img
+                  alt=""
                   className="animate__animated smartimg_Inner"
                   src={tablet}
                 />
 
                 <img
+                  alt=""
                   className="animate__animated smartimg_Inner_b"
                   src={dairy}
                 />
@@ -129,6 +148,7 @@ const OurServices = () => {
           <div className="container">
             <div className="sections" >
               <img
+                alt=""
                 className="animate__animated animate__zoomIn laptopimg"
                 src={laptop}
               />
@@ -143,16 +163,19 @@ const OurServices = () => {
 
               <div className="animate__animated animate__zoomIn laptopimg_inner">
                 <img
+                  alt=""
                   className="animate__animated tabletimg mobileimg mobileimg_b"
                   src={mobile}
                 />
                 <div className="animate__animated smartimg">
                   <img
+                    alt=""
                     className="animate__animated laptopsmartimg_Inner"
                     src={tablet}
                   />
 
                   <img
+                    alt=""
                     className="animate__animated laptopsmartimg_Inner_b"
                     src={dairy}
                   />
@@ -171,6 +194,7 @@ const OurServices = () => {
             <div className="sections" >
               <div className="optimize" >
                 <img
+                  alt=""
                   className="animate__animated animate__zoomIn opt_laptopimg"
                   src={laptop}
                 />
@@ -185,16 +209,19 @@ const OurServices = () => {
 
                 <div className="animate__animated animate__zoomIn opt_laptopimg_inner">
                   <img
+                    alt=""
                     className="animate__animated tabletimg mobileimg mobileimg_b"
                     src={mobile}
                   />
                   <div className="animate__animated smartimg">
                     <img
+                      alt=""
                       className="animate__animated opt_laptopsmartimg_Inner"
                       src={tablet}
                     />
 
                     <img
+                      alt=""
                       className="animate__animated opt_laptopsmartimg_Inner_b"
                       src={dairy}
                     />
@@ -206,21 +233,25 @@ const OurServices = () => {
                 </div>
 
                 <img
+                  alt=""
                   className="animate__animated animate__zoomIn opt_glass"
                   src={glass}
                 />
 
                 <img
+                  alt=""
                   className="animate__animated animate__zoomIn grea_a"
                   src={gear}
                 />
 
                 <img
+                  alt=""
                   className="animate__animated animate__zoomIn grea_b"
                   src={gear}
                 />
 
                 <img
+                  alt=""
                   className="animate__animated animate__zoomIn opt_status"
                   src={stats}
                 />

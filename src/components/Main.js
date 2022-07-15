@@ -14,7 +14,6 @@ const Main = () => {
     activeMenu: "Info",
     isLoading: true,
     sliderCount: 0,
-    viewCount: 1
   });
 
   const setMenu = (value, index) => {
@@ -25,40 +24,51 @@ const Main = () => {
     }));
   };
 
+  let servicesViewRef = React.useRef(0).current;
+  const updateServices = (val = 0) => {
+    servicesViewRef = val;
+  }
   const activeComponent = {
-    Info: <Info />,
-    "Our Services": <OurServices />,
+    "Info": <Info />,
+    "Our Services": <OurServices
+      updateServices={updateServices}
+    />,
     "About Us": <About />,
-    Contact: <Contact />,
+    "Contact": <Contact />,
   };
   let pageArray = ["Info", "Our Services", "About Us", "Contact"];
 
   const changeSlider = () => {
     let elementAll = document.querySelectorAll(".blocksection");
-    if (state.sliderCount == 3) {
+    if (state.sliderCount + 1 === pageArray.length) {
       setState(pre => ({ ...pre, activeMenu: pageArray[0], sliderCount: 0 }))
     }
-    else if (state.sliderCount == 1) {
-      if (elementAll.length == state.viewCount) {
+    else if (pageArray[state.sliderCount] === "Our Services") {
+      if (elementAll.length - 1 === servicesViewRef) {
         elementAll[0].classList.add('active')
         setState((pre) => ({
           ...pre,
-          activeMenu: pageArray[state.sliderCount],
-          sliderCount: state.sliderCount++,
-          viewCount: 1
+          activeMenu: pageArray[pre.sliderCount],
+          sliderCount: pre.sliderCount++,
         }));
+        servicesViewRef = 1;
       }
       else {
-        elementAll[state.viewCount - 1].classList.remove('active')
-        elementAll[state.viewCount].classList.add('active')
-        setState(pre => ({ ...pre, viewCount: state.viewCount++ }))
+        servicesViewRef = servicesViewRef + 1;
+        for (var i = 0; i < elementAll.length; i++) {
+          if (i === servicesViewRef) {
+            elementAll[i].classList.add("active");
+          } else {
+            elementAll[i].classList.remove("active");
+          }
+        }
       }
     }
     else {
       setState((pre) => ({
         ...pre,
-        activeMenu: pageArray[state.sliderCount],
-        sliderCount: state.sliderCount++
+        activeMenu: pageArray[pre.sliderCount],
+        sliderCount: pre.sliderCount++
       }));
     }
   }
@@ -81,7 +91,8 @@ const Main = () => {
     <>
       <header>
         <div className="logo">
-          <img src={logo} />
+          <img
+alt="" src={logo} />
         </div>
 
         {pageArray?.map((item, i) => {
@@ -99,7 +110,8 @@ const Main = () => {
 
       <div className="mainContainer">
         {activeComponent[state.activeMenu]}
-        <img src={mouseImage} className="mousePointer" onClick={() => changeSlider()} />
+        <img
+alt="" src={mouseImage} className="mousePointer" onClick={changeSlider} />
       </div>
     </>
   ) : (

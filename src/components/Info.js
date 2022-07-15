@@ -4,7 +4,8 @@ const Info = () => {
   return (
     <div className='info animate__animated animate__zoomIn '>
       <div className='infoImage' >
-      <img src={bg_logo} className=""/>
+      <img
+alt="" src={bg_logo} className=""/>
       <div className='content '>
             <h2>Actualization</h2>
             <p>"The process of making something happen and become real"</p>

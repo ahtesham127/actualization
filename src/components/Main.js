@@ -37,6 +37,7 @@ const Main = () => {
   let pageArray = ["Info", "Our Services", "About Us", "Contact"];
 
   const changeSlider = () => {
+    alert("s")
     let elementAll = document.querySelectorAll(".blocksection");
     if (state.sliderCount + 1 === pageArray.length) {
       setState((pre) => ({ ...pre, activeMenu: pageArray[0], sliderCount: 0 }));

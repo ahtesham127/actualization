@@ -99,7 +99,7 @@ const Main = () => {
 
       <div className="mainContainer">
         {activeComponent[state.activeMenu]}
-        <img src={mouseImage} className="mousePointer" onClick={(() => changeSlider())} />
+        <img src={mouseImage} className="mousePointer" onClick={() => changeSlider()} />
       </div>
     </>
   ) : (

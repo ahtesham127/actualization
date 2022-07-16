@@ -21,7 +21,7 @@ const Main = () => {
     let elementAll = document.querySelectorAll(".blocksection");
     if (state.sliderCount + 1 == pageArray.length) {
       setState((pre) => ({ ...pre, activeMenu: pageArray[0], sliderCount: 0 }));
-    } else if (pageArray[state.sliderCount] == "Our Services") {
+    } else if (pageArray[state.sliderCount] == "OurServices") {
       if (elementAll.length - 1 == servicesViewRef) {
         elementAll[0].classList.add("active");
         setState((pre) => ({

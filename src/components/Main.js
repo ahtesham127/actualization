@@ -61,12 +61,12 @@ const Main = () => {
     servicesViewRef = val;
   };
   const activeComponent = {
-    Info: <Info />,
-    "Our Services": <OurServices updateServices={updateServices} />,
-    "About Us": <About />,
-    Contact: <Contact />,
+    "Info": <Info />,
+    "OurServices": <OurServices updateServices={updateServices} />,
+    "AboutUs": <About />,
+    "Contact": <Contact />,
   };
-  let pageArray = ["Info", "Our Services", "About Us", "Contact"];
+  let pageArray = ["Info", "OurServices", "AboutUs", "Contact"];
 
   useEffect(() => {
     setState((pre) => ({

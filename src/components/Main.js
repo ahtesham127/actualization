@@ -81,7 +81,7 @@ const Main = () => {
         ...pre,
         isLoading: false,
       }));
-    }, 5000);
+    }, 0);
   }, []);
 
   return !state.isLoading ? (
@@ -106,11 +106,14 @@ const Main = () => {
 
       <div className="mainContainer">
         {activeComponent[state.activeMenu]}
+        <div className="" onClick={() => changeSlider()}>
         <img
           src={mouseImage}
           className="mousePointer"
-          onClick={() => changeSlider()}
+          
         />
+        </div>
+      
       </div>
     </>
   ) : (

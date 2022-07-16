@@ -17,6 +17,7 @@ const Main = () => {
   });
 
   let changeSlider = () => {
+    stopPropagation();
     let elementAll = document.querySelectorAll(".blocksection");
     if (state.sliderCount + 1 == pageArray.length) {
       setState((pre) => ({ ...pre, activeMenu: pageArray[0], sliderCount: 0 }));
@@ -104,7 +105,7 @@ const Main = () => {
 
       <div className="mainContainer">
         {activeComponent[state.activeMenu]}
-        <div className="" onClick={() => changeSlider()}>
+        <div className="" onClick={(e) => changeSlider(e)}>
           <img src={mouseImage} className="mousePointer" />
         </div>
       </div>

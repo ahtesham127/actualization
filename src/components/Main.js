@@ -16,33 +16,11 @@ const Main = () => {
     sliderCount: 0,
   });
 
-  const setMenu = (value, index) => {
-    setState((pre) => ({
-      ...pre,
-      activeMenu: value,
-      sliderCount: index,
-    }));
-  };
-
-  let servicesViewRef = React.useRef(0).current;
-  const updateServices = (val = 0) => {
-    servicesViewRef = val;
-  };
-  const activeComponent = {
-    "Info": <Info />,
-    "Our Services": <OurServices updateServices={updateServices} />,
-    "About Us": <About />,
-    "Contact": <Contact />,
-  };
-  let pageArray = ["Info", "Our Services", "About Us", "Contact"];
-
-  const changeSlider = ()=> {
-   
+  let changeSlider = () => {
     let elementAll = document.querySelectorAll(".blocksection");
     if (state.sliderCount + 1 == pageArray.length) {
       setState((pre) => ({ ...pre, activeMenu: pageArray[0], sliderCount: 0 }));
-    } 
-    else if (pageArray[state.sliderCount] == "Our Services") {
+    } else if (pageArray[state.sliderCount] == "Our Services") {
       if (elementAll.length - 1 == servicesViewRef) {
         elementAll[0].classList.add("active");
         setState((pre) => ({
@@ -68,7 +46,27 @@ const Main = () => {
         sliderCount: pre.sliderCount++,
       }));
     }
-  }
+  };
+
+  const setMenu = (value, index) => {
+    setState((pre) => ({
+      ...pre,
+      activeMenu: value,
+      sliderCount: index,
+    }));
+  };
+
+  let servicesViewRef = React.useRef(0).current;
+  const updateServices = (val = 0) => {
+    servicesViewRef = val;
+  };
+  const activeComponent = {
+    Info: <Info />,
+    "Our Services": <OurServices updateServices={updateServices} />,
+    "About Us": <About />,
+    Contact: <Contact />,
+  };
+  let pageArray = ["Info", "Our Services", "About Us", "Contact"];
 
   useEffect(() => {
     setState((pre) => ({
@@ -107,13 +105,8 @@ const Main = () => {
       <div className="mainContainer">
         {activeComponent[state.activeMenu]}
         <div className="" onClick={() => changeSlider()}>
-        <img
-          src={mouseImage}
-          className="mousePointer"
-          
-        />
+          <img src={mouseImage} className="mousePointer" />
         </div>
-      
       </div>
     </>
   ) : (

@@ -21,7 +21,7 @@ const Main = () => {
     let elementAll = document.querySelectorAll(".blocksection");
     if (state.sliderCount + 1 == pageArray.length) {
       setState((pre) => ({ ...pre, activeMenu: pageArray[0], sliderCount: 0 }));
-    } else if (pageArray[state.sliderCount] == "OurServices") {
+    } else if (pageArray[state.sliderCount] == "Our Services") {
       if (elementAll.length - 1 == servicesViewRef) {
         elementAll[0].classList.add("active");
         setState((pre) => ({
@@ -63,11 +63,11 @@ const Main = () => {
   };
   const activeComponent = {
     "Info": <Info />,
-    "OurServices": <OurServices updateServices={updateServices} />,
-    "AboutUs": <About />,
+    "Our Services": <OurServices updateServices={updateServices} />,
+    "About Us": <About />,
     "Contact": <Contact />,
   };
-  let pageArray = ["Info", "OurServices", "AboutUs", "Contact"];
+  let pageArray = ["Info", "Our Services", "About Us", "Contact"];
 
   useEffect(() => {
     setState((pre) => ({
@@ -80,7 +80,7 @@ const Main = () => {
         ...pre,
         isLoading: false,
       }));
-    }, 5000);
+    }, 0);
   }, []);
 
   return !state.isLoading ? (

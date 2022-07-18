@@ -259,6 +259,13 @@ section.active .tabletimg_ {
   opacity: 1;
   top: 40px;
 }
+section.active .laptopimg_ {
+  animation: zoom-in-zoom-in_2 2s linear forwards;
+  position: absolute;
+  left: 32.1%;
+  opacity: 1;
+  top: 40px;
+}
 section.active .section_old{
   animation: zoom-in-zoom-out 2s linear forwards ;
   opacity: 1;
@@ -267,6 +274,23 @@ section.active .section_old{
   left: 60.1%;
   
 
+}
+
+@keyframes zoom-in-zoom-in_2 {
+  0%,
+  20% {
+    transform: scale(1);
+    width: 640px;
+    opacity: 0;
+    left: 24.1%;
+  }
+
+  75%,
+  100% {
+    transform: scale(1);
+    width: 60%;
+    left: 38.1%;
+  }
 }
 
 @keyframes zoom-in-zoom-out {

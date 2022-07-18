@@ -7,6 +7,7 @@ import glass from "../assets/Magnifying_glass.svg";
 import gear from "../assets/Gear.svg";
 import stats from "../assets/Stats.svg";
 import groupTwo from "../assets/group_2.png";
+import groupThree from "../assets/group_3.png";
 
 const OurServices = ({ updateServices }) => {
 
@@ -155,9 +156,15 @@ const OurServices = ({ updateServices }) => {
         <section className="blocksection page4" data-section="3">
           <div className="container">
             <div className="sections" >
+            <img
+                alt=""
+                className=" section_old"
+                src={groupThree}
+                style={{ marginTop: "45px", marginLeft: "-19px"}}
+              />
               <img
                 alt=""
-                className="animate__animated animate__zoomIn laptopimg"
+                className="animate__animated animate__zoomIn laptopimg_"
                 src={laptop}
               />
 
@@ -169,7 +176,7 @@ const OurServices = ({ updateServices }) => {
                 </p>
               </div>
 
-              <div className="animate__animated animate__zoomIn laptopimg_inner">
+              {/* <div className="animate__animated animate__zoomIn laptopimg_inner">
                 <img
                   alt=""
                   className="animate__animated tabletimg mobileimg mobileimg_b"
@@ -192,7 +199,7 @@ const OurServices = ({ updateServices }) => {
                     <h1>Our Services</h1>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>

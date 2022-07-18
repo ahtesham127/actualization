@@ -1,79 +1,33 @@
-import React, { useRef } from "react";
-import emailjs from "@emailjs/browser";
+import React from "react";
 
 const Contact = () => {
-  const form = useRef();
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-    emailjs
-      .sendForm(
-        "service_9mhut5g",
-        "template_p1v5woe",
-        form.current,
-        "gxsSncUmO8cvM14am"
-      )
-      .then(
-        (result) => {
-          alert(result.text === "OK" && "Email Sent Successfully");
-          form.current.reset();
-        },
-        (error) => {
-          alert(error.text);
-        }
-      );
-  };
-
   return (
     <div className="contact">
-      <div className="animate_animated animate_fadeIn">
+      <div className="animate__animated animate__fadeIn">
         <h1>Contact Us</h1>
         <p>Lorem Ipsum is simply dummy text typesetting industry.</p>
         <div className="formMain">
-          <div className="row">
-            <form ref={form} onSubmit={sendEmail}>
-              <div className="row">
-                <div className="col-lg-6">
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    name="firstname"
-                    className="form-control"
-                  />
-                </div>
-                <div className="col-lg-6">
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    className="form-control"
-                  />
-                </div>
-              </div>
-              <div className="col-lg-12">
-                <input
-                  type="text"
-                  placeholder="Subject"
-                  name="subject"
-                  className="form-control"
-                />
-              </div>
-              <div className="col-lg-12">
-                <textarea
-                  placeholder="Message"
-                  name="messsage"
-                  className="form-control"
-                />
-              </div>
-              <div className="col-lg-12">
-                <button type="submit" className="btn btn_submit">
-                  Send Message
-                </button>
-              </div>
-            </form>
+        <div className="row">
+          <div className="col-lg-6">
+            <input type="text" placeholder="Name" className="form-control"/>
+          </div>
+          <div className="col-lg-6">
+            <input type="email" placeholder="Email"  className="form-control"/>
+          </div>
+          <div className="col-lg-12">
+            <input type="email" placeholder="Subject"  className="form-control"/>
+          </div>
+          <div className="col-lg-12">
+            <textarea placeholder="Message"  className="form-control"/>
+          </div>
+          <div className="col-lg-12">
+            <button className="btn btn_submit">Send Message</button>
           </div>
         </div>
       </div>
+      </div>
+
+    
     </div>
   );
 };

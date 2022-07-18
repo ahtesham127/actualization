@@ -16,58 +16,62 @@ const Main = () => {
     sliderCount: 0,
   });
 
-  let changeSlider = (e) => {
-   
-    let elementAll = document.querySelectorAll(".blocksection");
-    if (state.sliderCount + 1 == pageArray.length) {
-      setState((pre) => ({ ...pre, activeMenu: pageArray[0], sliderCount: 0 }));
-    } else if (pageArray[state.sliderCount] == "Our Services") {
-      if (elementAll.length - 1 == servicesViewRef) {
-        elementAll[0].classList.add("active");
-        setState((pre) => ({
-          ...pre,
-          activeMenu: pageArray[pre.sliderCount],
-          sliderCount: pre.sliderCount++,
-        }));
-        servicesViewRef = 1;
-      } else {
-        servicesViewRef = servicesViewRef + 1;
-        for (var i = 0; i < elementAll.length; i++) {
-          if (i == servicesViewRef) {
-            elementAll[i].classList.add("active");
-          } else {
-            elementAll[i].classList.remove("active");
-          }
-        }
-      }
-    } else {
-      setState((pre) => ({
-        ...pre,
-        activeMenu: pageArray[pre.sliderCount],
-        sliderCount: pre.sliderCount++,
-      }));
-    }
-  };
-
   const setMenu = (value, index) => {
     setState((pre) => ({
       ...pre,
       activeMenu: value,
-      sliderCount: index,
+      sliderCount: index
     }));
   };
 
   let servicesViewRef = React.useRef(0).current;
   const updateServices = (val = 0) => {
     servicesViewRef = val;
-  };
+  }
   const activeComponent = {
     "Info": <Info />,
-    "Our Services": <OurServices updateServices={updateServices} />,
+    "Our Services": <OurServices
+      updateServices={updateServices}
+    />,
     "About Us": <About />,
     "Contact": <Contact />,
   };
   let pageArray = ["Info", "Our Services", "About Us", "Contact"];
+
+  const changeSlider = () => {
+    let elementAll = document.querySelectorAll(".blocksection");
+    if (state.sliderCount + 1 === pageArray.length) {
+      setState(pre => ({ ...pre, activeMenu: pageArray[0], sliderCount: 0 }))
+    }
+    else if (pageArray[state.sliderCount] === "Our Services") {
+      if (elementAll.length - 1 === servicesViewRef) {
+        elementAll[0].classList.add('active')
+        setState((pre) => ({
+          ...pre,
+          activeMenu: pageArray[pre.sliderCount],
+          sliderCount: pre.sliderCount++,
+        }));
+        servicesViewRef = 1;
+      }
+      else {
+        servicesViewRef = servicesViewRef + 1;
+        for (var i = 0; i < elementAll.length; i++) {
+          if (i === servicesViewRef) {
+            elementAll[i].classList.add("active");
+          } else {
+            elementAll[i].classList.remove("active");
+          }
+        }
+      }
+    }
+    else {
+      setState((pre) => ({
+        ...pre,
+        activeMenu: pageArray[pre.sliderCount],
+        sliderCount: pre.sliderCount++
+      }));
+    }
+  }
 
   useEffect(() => {
     setState((pre) => ({
@@ -80,14 +84,15 @@ const Main = () => {
         ...pre,
         isLoading: false,
       }));
-    }, 0);
+    }, 5000);
   }, []);
 
   return !state.isLoading ? (
     <>
       <header>
         <div className="logo">
-          <img alt="" src={logo} />
+          <img
+alt="" src={logo} />
         </div>
 
         {pageArray?.map((item, i) => {
@@ -105,9 +110,8 @@ const Main = () => {
 
       <div className="mainContainer">
         {activeComponent[state.activeMenu]}
-        <div className="" onClick={(e) => changeSlider(e)}>
-          <img src={mouseImage} className="mousePointer" />
-        </div>
+        <img
+alt="" src={mouseImage} className="mousePointer" onClick={changeSlider} />
       </div>
     </>
   ) : (

@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/actualization/static/css/main.91b58483.css",
-    "main.js": "/actualization/static/js/main.7b0c8c95.js",
+    "main.css": "/actualization/static/css/main.79255ec2.css",
+    "main.js": "/actualization/static/js/main.f867a722.js",
     "static/js/787.343a92ed.chunk.js": "/actualization/static/js/787.343a92ed.chunk.js",
     "static/media/bg.png": "/actualization/static/media/bg.25109172b4df1273f826.png",
     "static/media/bg_logo.png": "/actualization/static/media/bg_logo.47e27787993a2ac0c795.png",
+    "static/media/group_2.png": "/actualization/static/media/group_2.666287ac9344b15e62ee.png",
     "static/media/Gear.svg": "/actualization/static/media/Gear.23679e011fad40da021e584e5316a474.svg",
     "static/media/Mobile.svg": "/actualization/static/media/Mobile.90b87a2be5a84eb1d5ff5eeae64b2011.svg",
     "static/media/Diary.svg": "/actualization/static/media/Diary.e99d1401785b2c305ab5dceb562017d6.svg",
@@ -14,12 +15,12 @@
     "index.html": "/actualization/index.html",
     "static/media/Mouse.svg": "/actualization/static/media/Mouse.2229eb0605ebc54fa807b98b59eea5a4.svg",
     "static/media/Tablet.svg": "/actualization/static/media/Tablet.9659721c666e57e027b0bfeebce80d94.svg",
-    "main.91b58483.css.map": "/actualization/static/css/main.91b58483.css.map",
-    "main.7b0c8c95.js.map": "/actualization/static/js/main.7b0c8c95.js.map",
+    "main.79255ec2.css.map": "/actualization/static/css/main.79255ec2.css.map",
+    "main.f867a722.js.map": "/actualization/static/js/main.f867a722.js.map",
     "787.343a92ed.chunk.js.map": "/actualization/static/js/787.343a92ed.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.91b58483.css",
-    "static/js/main.7b0c8c95.js"
+    "static/css/main.79255ec2.css",
+    "static/js/main.f867a722.js"
   ]
 }

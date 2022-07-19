@@ -11,52 +11,8 @@ import groupThree from "../assets/group_3.png";
 
 const OurServices = ({ updateServices }) => {
 
-
-  // const ref1 = useRef(null);
-
-
-  // function useIsInViewport(ref) {
-  //   const [isIntersecting, setIsIntersecting] = useState(false);
-
-  //   const observer = useMemo(
-  //     () =>
-  //       new IntersectionObserver(([entry]) =>
-  //         setIsIntersecting(entry.isIntersecting)
-  //       ),
-  //     []
-  //   );
-
-  //   useEffect(() => {
-  //     observer.observe(ref.current);
-
-  //     return () => {
-  //       observer.disconnect();
-  //     };
-  //   }, [ref, observer]);
-
-  //   return isIntersecting;
-  // }
-
-  // const scrollfun = () => {
-  //element.classList.add("active");
-  // if(isInViewport1){
-  //     const element = ref1.current;
-  //     element.classList.remove("active")
-  //    element.classList.add("active")
-  // }
-  // else if(isInViewport2){
-  //     const element = ref2.current;
-  //     element.classList.remove("active")
-  //     element.classList.add("active");
-  // }
-  // else if(isInViewport3){
-  //     const element = ref3.current;
-  //     element.classList.remove("active")
-  //     element.classList.add("active");
-  // }
-  // };
   let sections = document.getElementsByTagName("section");
-  // tracks index of current section
+
   let currentSectionIndex = React.useRef(0);
 
   React.useEffect(() => {

@@ -20,40 +20,36 @@ const Main = () => {
     setState((pre) => ({
       ...pre,
       activeMenu: value,
-      sliderCount: index
+      sliderCount: index,
     }));
   };
 
   let servicesViewRef = React.useRef(0).current;
   const updateServices = (val = 0) => {
     servicesViewRef = val;
-  }
+  };
   const activeComponent = {
-    "Info": <Info />,
-    "Our Services": <OurServices
-      updateServices={updateServices}
-    />,
+    Info: <Info />,
+    "Our Services": <OurServices updateServices={updateServices} />,
     "About Us": <About />,
-    "Contact": <Contact />,
+    Contact: <Contact />,
   };
   let pageArray = ["Info", "Our Services", "About Us", "Contact"];
 
   const changeSlider = () => {
     let elementAll = document.querySelectorAll(".blocksection");
     if (state.sliderCount + 1 === pageArray.length) {
-      setState(pre => ({ ...pre, activeMenu: pageArray[0], sliderCount: 0 }))
-    }
-    else if (pageArray[state.sliderCount] === "Our Services") {
+      setState((pre) => ({ ...pre, activeMenu: pageArray[0], sliderCount: 0 }));
+    } else if (pageArray[state.sliderCount] === "Our Services") {
       if (elementAll.length - 1 === servicesViewRef) {
-        elementAll[0].classList.add('active')
+        elementAll[0].classList.add("active");
         setState((pre) => ({
           ...pre,
           activeMenu: pageArray[pre.sliderCount],
           sliderCount: pre.sliderCount++,
         }));
         servicesViewRef = 1;
-      }
-      else {
+      } else {
         servicesViewRef = servicesViewRef + 1;
         for (var i = 0; i < elementAll.length; i++) {
           if (i === servicesViewRef) {
@@ -63,15 +59,14 @@ const Main = () => {
           }
         }
       }
-    }
-    else {
+    } else {
       setState((pre) => ({
         ...pre,
         activeMenu: pageArray[pre.sliderCount],
-        sliderCount: pre.sliderCount++
+        sliderCount: pre.sliderCount++,
       }));
     }
-  }
+  };
 
   useEffect(() => {
     setState((pre) => ({
@@ -91,8 +86,7 @@ const Main = () => {
     <>
       <header>
         <div className="logo">
-          <img
-alt="" src={logo} />
+          <img alt="" src={logo} />
         </div>
 
         {pageArray?.map((item, i) => {
@@ -110,8 +104,9 @@ alt="" src={logo} />
 
       <div className="mainContainer">
         {activeComponent[state.activeMenu]}
-        <img
-alt="" src={mouseImage} className="mousePointer" onClick={changeSlider} />
+        <div onClick={changeSlider}>
+          <img alt="" src={mouseImage} className="mousePointer" />
+        </div>
       </div>
     </>
   ) : (

@@ -252,31 +252,95 @@ section.active .tabletimg {
   animation: grow 2s linear forwards;
   opacity: 1;
 }
-section.active .tabletimg_ {
-  animation: zoom-in-zoom-in 2s linear forwards;
-  position: absolute;
-  left: 32.1%;
-  opacity: 1;
-  top: 40px;
-}
-section.active .laptopimg_ {
-  animation: zoom-in-zoom-in_2 2s linear forwards;
-  position: absolute;
-  left: 32.1%;
-  opacity: 1;
-  top: 40px;
-}
-section.active .section_old{
-  animation: zoom-in-zoom-out 2s linear forwards ;
+
+
+section.active .tabletimg_prev{
+  animation: tabletimg_prev 2s linear forwards ;
   opacity: 1;
   position: absolute;
   z-index: 99;
-  left: 60.1%;
+
   
 
 }
+section.active .tabletimg_prev_big{
+  animation: tabletimg_prev_big 2s linear forwards ;
+  opacity: 1;
+  position: absolute;
+  z-index: 99;
 
-@keyframes zoom-in-zoom-in_2 {
+}
+section.active .mobileImg {
+  animation: mobileImg 2s linear forwards;
+  position: absolute;
+  left: 32.1%;
+  opacity: 1;
+  top: 40px;
+}
+section.active .mobileClass_big {
+  animation: mobileClass_big 2s linear forwards;
+  position: absolute;
+  left: 32.1%;
+  opacity: 1;
+
+}
+section.active .laptopImg {
+  animation: laptopImg 2s linear forwards;
+  position: absolute;
+  left: 32.1%;
+  opacity: 1;
+  top: 40px;
+}
+
+section.active .title1 h1 {
+  font-size: 40px;
+  margin-top: 0;
+  letter-spacing: 4px;
+  font-weight: bold;
+  margin-left: 25px;
+}
+
+@keyframes tabletimg_prev {
+  0%,
+  20% {
+    transform: scale(1);
+    width: 366px;
+    left: 378px;
+    top: 49px;
+  
+    
+  }
+
+  75%,
+  100% {
+    transform: scale(0.5);
+    width: 22%;
+    left: 440px;
+    top:-8px
+  }
+}
+@keyframes tabletimg_prev_big {
+  0%,
+  20% {
+    transform: scale(1);
+    width: 643px;
+    left: 251px;
+    top: 36px;
+  
+    
+  }
+
+  75%,
+  100% {
+    transform: scale(0.5);
+    width: 34%;
+    left: 391px;
+    top: -46px;
+  }
+}
+
+
+@keyframes laptopImg {
   0%,
   20% {
     transform: scale(1);
@@ -293,26 +357,8 @@ section.active .section_old{
   }
 }
 
-@keyframes zoom-in-zoom-out {
-  0%,
-  20% {
-    transform: scale(1);
-    width: 364px;
-    left: 34.8%;
-    top: 0;
-  
-    
-  }
 
-  75%,
-  100% {
-    transform: scale(0.5);
-    width: 22%;
-    left: 40.1%;
-    top:-50px
-  }
-}
-@keyframes zoom-in-zoom-in {
+@keyframes mobileImg {
   0%,
   20% {
     transform: scale(1);
@@ -326,6 +372,26 @@ section.active .section_old{
     transform: scale(1);
     width: 22%;
     left: 38.1%;
+  }
+}
+
+@keyframes mobileClass_big {
+  0%,
+  20% {
+    transform: scale(1);
+    width: 600px;
+    opacity: 0;
+    left: 24.1%;
+    top:0
+  }
+
+  75%,
+  100% {
+    transform: scale(0.6) ;
+    width: 600px;
+    left: 24%;
+    opacity: 1;
+    top: -200px;
   }
 }
 
@@ -357,14 +423,19 @@ section.active .title1 {
   animation: grows 2s linear forwards;
   opacity: 1;
 }
-
-section.active .title1 h1 {
-  font-size: 40px;
-  margin-top: 0;
-  letter-spacing: 4px;
-  font-weight: bold;
-  margin-left: 40px;
+.two{
+  display: none;
 }
+
+/* @media(min-width: 1500px){
+  .two{
+       display: block;
+  }
+  .tabletimg_prev{
+    display: none;
+  }
+} */
+
 
 @keyframes grows {
   0%,

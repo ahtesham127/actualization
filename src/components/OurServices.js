@@ -7,13 +7,19 @@ import glass from "../assets/Magnifying_glass.svg";
 import gear from "../assets/Gear.svg";
 import stats from "../assets/Stats.svg";
 import groupTwo from "../assets/group_2.png";
+import group_3_larger from "../assets/group_3_larger.png";
 import groupThree from "../assets/group_3.png";
 
 const OurServices = ({ updateServices }) => {
 
   let sections = document.getElementsByTagName("section");
-
   let currentSectionIndex = React.useRef(0);
+  
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+  const tabletImg = windowWidth >= 1800 ? group_3_larger : groupTwo;
+  const tabletImgClass = windowWidth >= 1800 ? "tabletimg_prev_big" : "tabletimg_prev";
+  const mobileClass = windowWidth >= 1800 ? "mobileClass_big" : "mobileImg";
 
   React.useEffect(() => {
     document.addEventListener("wheel", (e) => {
@@ -41,7 +47,20 @@ const OurServices = ({ updateServices }) => {
         updateServices(currentSectionIndex.current)
       }
     });
-  }, [sections,updateServices])
+
+  }, [sections, updateServices])
+  React.useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    }
+  }, []);
+
   return (
     <div className="ourServices">
       <div className="content">
@@ -76,18 +95,24 @@ const OurServices = ({ updateServices }) => {
         <section className="blocksection page3" data-section="2">
           <div className="container">
             <div className="sections" >
-            <img
-                alt=""
-                className=" section_old"
-                src={groupTwo}
-                style={{ marginTop: "45px", marginLeft: "-19px"}}
-              />
-           
               <img
                 alt=""
-                className="animate__animated animate__zoomIn tabletimg_"
+                className={tabletImgClass}
+                src={tabletImg}
+                style={{}}
+              />
+              {/* <picture>
+                <source media="(min-width:1200px and max-width: 1400px)" srcSet={groupTwo} className="tabletimg_prev"/>
+                <source media="(min-width: 1500px and max-width: 2000px)" srcSet={group_3_larger}  />
+                <img src={group_3_larger} className="" alt="Chris standing up holding his daughter Elva" />
+              </picture> */}
+
+      
+              <img
+                alt=""
+                className={`${mobileClass}`}
                 src={mobile}
-              /> 
+              />
               {/* <div className="animate__animated animate__zoomIn smartimg">
                 <img
                   alt=""
@@ -112,15 +137,15 @@ const OurServices = ({ updateServices }) => {
         <section className="blocksection page4" data-section="3">
           <div className="container">
             <div className="sections" >
-            <img
+              <img
                 alt=""
                 className=" section_old"
                 src={groupThree}
-                style={{ marginTop: "45px", marginLeft: "-19px"}}
+                style={{ marginTop: "45px", marginLeft: "-19px" }}
               />
               <img
                 alt=""
-                className="animate__animated animate__zoomIn laptopimg_"
+                className="animate__animated animate__zoomIn laptopImg"
                 src={laptop}
               />
 

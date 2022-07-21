@@ -29,24 +29,25 @@ const Main = () => {
     servicesViewRef = val;
   };
   const activeComponent = {
-    Info: <Info />,
+    "Info": <Info />,
     "Our Services": <OurServices updateServices={updateServices} />,
     "About Us": <About />,
-    Contact: <Contact />,
+    "Contact": <Contact />,
   };
   let pageArray = ["Info", "Our Services", "About Us", "Contact"];
 
   const changeSlider = () => {
     let elementAll = document.querySelectorAll(".blocksection");
-    if (state.sliderCount + 1 === pageArray.length) {
+    const newCount = state.sliderCount + 1;
+    if (newCount === pageArray.length) {
       setState((pre) => ({ ...pre, activeMenu: pageArray[0], sliderCount: 0 }));
     } else if (pageArray[state.sliderCount] === "Our Services") {
       if (elementAll.length - 1 === servicesViewRef) {
         elementAll[0].classList.add("active");
         setState((pre) => ({
           ...pre,
-          activeMenu: pageArray[pre.sliderCount],
-          sliderCount: pre.sliderCount++,
+          activeMenu: pageArray[newCount],
+          sliderCount: newCount,
         }));
         servicesViewRef = 1;
       } else {
@@ -60,20 +61,16 @@ const Main = () => {
         }
       }
     } else {
-      setState((pre) => ({
-        ...pre,
-        activeMenu: pageArray[pre.sliderCount],
-        sliderCount: pre.sliderCount++,
-      }));
+      setState((pre) => {
+        return {
+          ...pre,
+          activeMenu: pageArray[newCount],
+          sliderCount: newCount,
+        }
+      });
     }
   };
-
   useEffect(() => {
-    setState((pre) => ({
-      ...pre,
-      activeMenu: "Info",
-    }));
-
     setTimeout(() => {
       setState((pre) => ({
         ...pre,

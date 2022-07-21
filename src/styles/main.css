@@ -72,6 +72,7 @@ header .logo {
 
 .container {
   position: relative;
+  margin: auto;
 }
 
 @media (min-width: 1400px) {
@@ -255,7 +256,7 @@ section.active .tabletimg {
 
 
 section.active .tabletimg_prev{
-  animation: tabletimg_prev 2s linear forwards ;
+  animation: tabletimg_prev 1500s linear forwards ;
   opacity: 1;
   position: absolute;
   z-index: 99;
@@ -265,6 +266,14 @@ section.active .tabletimg_prev{
 }
 section.active .tabletimg_prev_big{
   animation: tabletimg_prev_big 2s linear forwards ;
+  opacity: 1;
+  position: absolute;
+  z-index: 99;
+
+}
+
+section.active .tabletimg_prev_medium{
+  animation: tabletimg_prev_medium 2s linear forwards ;
   opacity: 1;
   position: absolute;
   z-index: 99;
@@ -338,7 +347,25 @@ section.active .title1 h1 {
     top: -46px;
   }
 }
+@keyframes tabletimg_prev_medium {
+  0%,
+  20% {
+    transform: scale(1);
+    width: 461px;
+    left: 332px;
+    top: 47px;
+  
+    
+  }
 
+  75%,
+  100% {
+    transform: scale(0.5);
+    width: 20%;
+    left: 450px;
+    top: 10px;
+  }
+}
 
 @keyframes laptopImg {
   0%,

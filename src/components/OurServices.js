@@ -6,9 +6,10 @@ import laptop from "../assets/Laptop.svg";
 import glass from "../assets/Magnifying_glass.svg";
 import gear from "../assets/Gear.svg";
 import stats from "../assets/Stats.svg";
-import groupTwo from "../assets/group_2.png";
+import groupTwo from "../assets/group_2_125.png";
 import group_3_larger from "../assets/group_3_larger.png";
 import groupThree from "../assets/group_3.png";
+import group_2_125 from "../assets/group_2_125.png";
 
 const OurServices = ({ updateServices }) => {
 
@@ -17,8 +18,8 @@ const OurServices = ({ updateServices }) => {
   
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
 
-  const tabletImg = windowWidth >= 1800 ? group_3_larger : groupTwo;
-  const tabletImgClass = windowWidth >= 1800 ? "tabletimg_prev_big" : "tabletimg_prev";
+  const tabletImg =  windowWidth >= 1800 ? group_3_larger :  windowWidth >= 1500 && windowWidth<= 1799 ? group_2_125 : groupTwo;
+  const tabletImgClass = windowWidth >= 1800 ? "tabletimg_prev_big" :  windowWidth >= 1500 && windowWidth<= 1799 ? "tabletimg_prev_medium" : "tabletimg_prev";
   const mobileClass = windowWidth >= 1800 ? "mobileClass_big" : "mobileImg";
 
   React.useEffect(() => {

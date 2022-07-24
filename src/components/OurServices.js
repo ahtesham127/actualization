@@ -3,24 +3,32 @@ import tablet from "../assets/Tablet.svg";
 import dairy from "../assets/Diary.svg";
 import mobile from "../assets/Mobile.svg";
 import laptop from "../assets/Laptop.svg";
+import laptop_125 from "../assets/laptop_big_125.png";
+import laptop_prev_big from "../assets/laptop_big.png";
 import glass from "../assets/Magnifying_glass.svg";
 import gear from "../assets/Gear.svg";
 import stats from "../assets/Stats.svg";
-import groupTwo from "../assets/group_2_125.png";
+import groupTwo from "../assets/group_2.png";
 import group_3_larger from "../assets/group_3_larger.png";
-import groupThree from "../assets/group_3.png";
+import mobile_big from "../assets/mobile_big.png";
+import mobile_big_125 from "../assets/mobile_big_125.png";
 import group_2_125 from "../assets/group_2_125.png";
 
 const OurServices = ({ updateServices }) => {
 
   let sections = document.getElementsByTagName("section");
   let currentSectionIndex = React.useRef(0);
-  
+
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
 
-  const tabletImg =  windowWidth >= 1800 ? group_3_larger :  windowWidth >= 1500 && windowWidth<= 1799 ? group_2_125 : groupTwo;
-  const tabletImgClass = windowWidth >= 1800 ? "tabletimg_prev_big" :  windowWidth >= 1500 && windowWidth<= 1799 ? "tabletimg_prev_medium" : "tabletimg_prev";
-  const mobileClass = windowWidth >= 1800 ? "mobileClass_big" : "mobileImg";
+  const tabletImg = windowWidth >= 1800 && windowWidth <= 2800 ? group_3_larger : windowWidth >= 1500 && windowWidth <= 1799 ? group_2_125 : groupTwo;
+  const mobileImg = windowWidth >= 1800 && windowWidth <= 2800 ? mobile_big : windowWidth >= 1500 && windowWidth <= 1799 ? mobile_big_125 : groupTwo;
+  const laptopImg = windowWidth >= 1800 && windowWidth <= 2800 ? laptop_prev_big : windowWidth >= 1500 && windowWidth <= 1799 ? laptop_125 : groupTwo;
+  const tabletImgClass = windowWidth >= 1800 ? "tabletimg_prev_big" : windowWidth >= 1500 && windowWidth <= 1799 ? "tabletimg_prev_medium" : "tabletimg_prev";
+  const mobileImgClass = windowWidth >= 1800 ? "mobileImg_prev_big" : windowWidth >= 1500 && windowWidth <= 1799 ? "mobileImg_prev_medium" : "tmobileImg_prev";
+  const laptopImgClass = windowWidth >= 1800 ? "laptop_prev_big" : windowWidth >= 1500 && windowWidth <= 1799 ? "laptop_prev_medium" : "laptop_prev";
+  const mobileClass = windowWidth >= 1800 ? "mobileClass_big" : windowWidth >= 1500 && windowWidth <= 1799 ? "mobileClass_medium" : "mobileImg";
+
 
   React.useEffect(() => {
     document.addEventListener("wheel", (e) => {
@@ -37,6 +45,7 @@ const OurServices = ({ updateServices }) => {
         updateServices(currentSectionIndex.current)
       } else if (e.wheelDeltaY < 0 && currentSectionIndex.current + 1 < sections.length) {
         // wheel down
+     
         currentSectionIndex.current = currentSectionIndex.current !== sections.length ? currentSectionIndex.current + 1 : currentSectionIndex.current;
         for (let i = 0; i < sections.length; i++) {
           if (i === currentSectionIndex.current) {
@@ -76,16 +85,19 @@ const OurServices = ({ updateServices }) => {
         <section className="blocksection page2" data-section="1">
           <div className="container">
             <div className="sections">
-              <img
-                alt=""
-                className="animate__animated animate__zoomIn tabletimg"
-                src={tablet}
-              />
-              <img
-                alt=""
-                className="animate__animated animate__zoomIn dairyimg"
-                src={dairy}
-              />
+              <div id="imgFirst">
+                <img
+                  alt=""
+                  className="animate__animated animate__zoomIn tabletimg"
+                  src={tablet}
+                />
+                <img
+                  alt=""
+                  className="animate__animated animate__zoomIn dairyimg"
+                  src={dairy}
+                />
+              </div>
+
               <div className="animate__animated animate__zoomIn title1">
                 <h1>Services</h1>
               </div>
@@ -102,35 +114,13 @@ const OurServices = ({ updateServices }) => {
                 src={tabletImg}
                 style={{}}
               />
-              {/* <picture>
-                <source media="(min-width:1200px and max-width: 1400px)" srcSet={groupTwo} className="tabletimg_prev"/>
-                <source media="(min-width: 1500px and max-width: 2000px)" srcSet={group_3_larger}  />
-                <img src={group_3_larger} className="" alt="Chris standing up holding his daughter Elva" />
-              </picture> */}
 
-      
               <img
                 alt=""
                 className={`${mobileClass}`}
                 src={mobile}
               />
-              {/* <div className="animate__animated animate__zoomIn smartimg">
-                <img
-                  alt=""
-                  className="animate__animated smartimg_Inner"
-                  src={tablet}
-                />
 
-                <img
-                  alt=""
-                  className="animate__animated smartimg_Inner_b"
-                  src={dairy}
-                />
-
-                <div className="animate__animated smallservice">
-                  <h1>Our Services</h1>
-                </div>
-              </div> */}
             </div>
           </div>
         </section>
@@ -140,13 +130,13 @@ const OurServices = ({ updateServices }) => {
             <div className="sections" >
               <img
                 alt=""
-                className=" section_old"
-                src={groupThree}
-                style={{ marginTop: "45px", marginLeft: "-19px" }}
+                className={mobileImgClass}
+                src={mobileImg}
+                style={{}}
               />
               <img
                 alt=""
-                className="animate__animated animate__zoomIn laptopImg"
+                className="laptopImg"
                 src={laptop}
               />
 
@@ -158,30 +148,7 @@ const OurServices = ({ updateServices }) => {
                 </p>
               </div>
 
-              {/* <div className="animate__animated animate__zoomIn laptopimg_inner">
-                <img
-                  alt=""
-                  className="animate__animated tabletimg mobileimg mobileimg_b"
-                  src={mobile}
-                />
-                <div className="animate__animated smartimg">
-                  <img
-                    alt=""
-                    className="animate__animated laptopsmartimg_Inner"
-                    src={tablet}
-                  />
 
-                  <img
-                    alt=""
-                    className="animate__animated laptopsmartimg_Inner_b"
-                    src={dairy}
-                  />
-
-                  <div className="animate__animated smallservice">
-                    <h1>Our Services</h1>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </section>
@@ -192,25 +159,14 @@ const OurServices = ({ updateServices }) => {
               <div className="optimize" >
                 <img
                   alt=""
-                  className="animate__animated animate__zoomIn opt_laptopimg"
-                  src={laptop}
+                  className={laptopImgClass}
+                  src={laptopImg}
                 />
 
-                <div className="opt_fade-in-image">
-                  <h1>Develop</h1>
-                  <p>
-                    From Web Apps to Mobile, we develop what your business needs
-                    to run better.
-                  </p>
-                </div>
 
                 <div className="animate__animated animate__zoomIn opt_laptopimg_inner">
-                  <img
-                    alt=""
-                    className="animate__animated tabletimg mobileimg mobileimg_b"
-                    src={mobile}
-                  />
-                  <div className="animate__animated smartimg">
+
+                  {/* <div className="animate__animated smartimg">
                     <img
                       alt=""
                       className="animate__animated opt_laptopsmartimg_Inner"
@@ -226,7 +182,7 @@ const OurServices = ({ updateServices }) => {
                     <div className="animate__animated smallservice">
                       <h1>Our Services</h1>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
 
                 <img

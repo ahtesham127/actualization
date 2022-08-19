@@ -79,6 +79,7 @@ const Main = () => {
     }, 5000);
   }, []);
 
+
   return !state.isLoading ? (
     <>
       <header>

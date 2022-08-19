@@ -25,47 +25,93 @@ const OurServices = ({ updateServices }) => {
 
   let sections = document.getElementsByTagName("section");
   let currentSectionIndex = React.useRef(0);
+  let timeoutRef = React.useRef(null)
+
 
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
 
-  const tabletImg = windowWidth >= 1800 && windowWidth <= 2800 ? group_3_larger : windowWidth >= 1500 && windowWidth <= 1799 ? group_2_125 :  windowWidth >= 1400 && windowWidth <= 1499 ? group_2_1440: groupTwo;
-  const mobileImg = windowWidth >= 1800 && windowWidth <= 2800 ? mobile_big : windowWidth >= 1500 && windowWidth <= 1799 ? mobile_big_125 :windowWidth >= 1400 && windowWidth <= 1499 ? mobile_1440: mobile_1366;
-  const laptopImg = windowWidth >= 1800 && windowWidth <= 2800 ? laptop_prev_big : windowWidth >= 1500 && windowWidth <= 1799 ? laptop_125 : windowWidth >= 1400 && windowWidth <= 1499 ? laptop_prev_1440: laptop_1366;
-  const tabletImgClass = windowWidth >= 1800 ? "tabletimg_prev_big" : windowWidth >= 1500 && windowWidth <= 1799 ? "tabletimg_prev_medium" :  windowWidth >= 1400 && windowWidth <= 1499 ? "tabletimg_prev_1440" :"tabletimg_prev";
+  const tabletImg = windowWidth >= 1800 && windowWidth <= 2800 ? group_3_larger : windowWidth >= 1500 && windowWidth <= 1799 ? group_2_125 : windowWidth >= 1400 && windowWidth <= 1499 ? group_2_1440 : groupTwo;
+  const mobileImg = windowWidth >= 1800 && windowWidth <= 2800 ? mobile_big : windowWidth >= 1500 && windowWidth <= 1799 ? mobile_big_125 : windowWidth >= 1400 && windowWidth <= 1499 ? mobile_1440 : mobile_1366;
+  const laptopImg = windowWidth >= 1800 && windowWidth <= 2800 ? laptop_prev_big : windowWidth >= 1500 && windowWidth <= 1799 ? laptop_125 : windowWidth >= 1400 && windowWidth <= 1499 ? laptop_prev_1440 : laptop_1366;
+  const tabletImgClass = windowWidth >= 1800 ? "tabletimg_prev_big" : windowWidth >= 1500 && windowWidth <= 1799 ? "tabletimg_prev_medium" : windowWidth >= 1400 && windowWidth <= 1499 ? "tabletimg_prev_1440" : "tabletimg_prev";
   const mobileImgClass = windowWidth >= 1800 ? "mobileImg_prev_big" : windowWidth >= 1500 && windowWidth <= 1799 ? "mobileImg_prev_medium" : windowWidth >= 1400 && windowWidth <= 1499 ? "mobileImg_prev_1440" : "mobileImg_prev";
-  const laptopImgClass = windowWidth >= 1800 ? "laptop_prev_big" : windowWidth >= 1500 && windowWidth <= 1799 ? "laptop_prev_medium" : windowWidth >= 1400 && windowWidth <= 1499 ? "laptop_prev_1440": "laptop_prev";
+  const laptopImgClass = windowWidth >= 1800 ? "laptop_prev_big" : windowWidth >= 1500 && windowWidth <= 1799 ? "laptop_prev_medium" : windowWidth >= 1400 && windowWidth <= 1499 ? "laptop_prev_1440" : "laptop_prev";
   const mobileClass = windowWidth >= 1800 ? "mobileClass_big" : windowWidth >= 1500 && windowWidth <= 1799 ? "mobileClass_medium" : "mobileImg";
-
 
   React.useEffect(() => {
     document.addEventListener("wheel", (e) => {
-      if (e.wheelDeltaY > 0 && currentSectionIndex.current - 1 >= 0) {
-        // wheel up
-        currentSectionIndex.current -= 1;
-        for (let i = 0; i < sections.length; i++) {
-          if (i === currentSectionIndex.current) {
-            sections[i].classList.add("active");
-          } else {
-            sections[i].classList.remove("active");
-          }
+      var isTrackpad = false;
+      if (e.wheelDeltaY) {
+        if (Math.abs(e.wheelDeltaY) !== 150 && Math.abs(e.wheelDeltaY) !== 120) {
+          isTrackpad = true;
         }
-        updateServices(currentSectionIndex.current)
-      } else if (e.wheelDeltaY < 0 && currentSectionIndex.current + 1 < sections.length) {
-        // wheel down
-     
-        currentSectionIndex.current = currentSectionIndex.current !== sections.length ? currentSectionIndex.current + 1 : currentSectionIndex.current;
-        for (let i = 0; i < sections.length; i++) {
-          if (i === currentSectionIndex.current) {
-            sections[i].classList.add("active");
-          } else {
-            sections[i].classList.remove("active");
+      }
+      else if (e.deltaMode === 0) {
+        isTrackpad = true;
+      }
+      if (isTrackpad === false) {
+        if (e.wheelDeltaY > 0 && currentSectionIndex.current - 1 >= 0) {
+          // wheel up
+          currentSectionIndex.current -= 1;
+          for (let i = 0; i < sections.length; i++) {
+            if (i === currentSectionIndex.current) {
+              sections[i].classList.add("active");
+            } else {
+              sections[i].classList.remove("active");
+            }
           }
+          updateServices(currentSectionIndex.current)
+        } else if (e.wheelDeltaY < 0 && currentSectionIndex.current + 1 < sections.length) {
+          // wheel down
+          currentSectionIndex.current += 1;
+          for (let i = 0; i < sections.length; i++) {
+            if (i === currentSectionIndex.current) {
+              sections[i].classList.add("active");
+            } else {
+              sections[i].classList.remove("active");
+            }
+          }
+          updateServices(currentSectionIndex.current)
         }
-        updateServices(currentSectionIndex.current)
+      } else {
+        if (timeoutRef.current) {
+          // scrollY.current += 0.5 * e.deltaY
+          clearTimeout(timeoutRef.current);
+          timeoutRef.current = null;
+        }
+        else if (e.deltaY < 0 && currentSectionIndex.current - 1 >= 0) {
+          // console.log("negative", e.deltaY);
+          currentSectionIndex.current -= 1;
+          for (let i = 0; i < sections.length; i++) {
+            if (i === currentSectionIndex.current) {
+              sections[i].classList.add("active");
+            } else {
+              sections[i].classList.remove("active");
+            }
+          }
+          updateServices(currentSectionIndex.current)
+        }
+        else if (e.deltaY > 0 && currentSectionIndex.current + 1 < sections.length) {
+          // console.log("positive", e.deltaY);
+          currentSectionIndex.current += 1;
+          for (let i = 0; i < sections.length; i++) {
+            if (i === currentSectionIndex.current) {
+              sections[i].classList.add("active");
+            } else {
+              sections[i].classList.remove("active");
+            }
+          }
+          updateServices(currentSectionIndex.current)
+        }
+        timeoutRef.current = setTimeout(() => {
+          // console.log("scroll stopped", e.deltaY);
+          clearTimeout(timeoutRef.current);
+          timeoutRef.current = null;
+        }, 300);
       }
     });
-
   }, [sections, updateServices])
+
   React.useEffect(() => {
     const handleWindowResize = () => {
       setWindowWidth(window.innerWidth);
@@ -77,6 +123,8 @@ const OurServices = ({ updateServices }) => {
       window.removeEventListener('resize', handleWindowResize);
     }
   }, []);
+
+
 
   return (
     <div className="ourServices">
@@ -173,23 +221,7 @@ const OurServices = ({ updateServices }) => {
 
                 <div className="animate__animated animate__zoomIn opt_laptopimg_inner">
 
-                  {/* <div className="animate__animated smartimg">
-                    <img
-                      alt=""
-                      className="animate__animated opt_laptopsmartimg_Inner"
-                      src={tablet}
-                    />
 
-                    <img
-                      alt=""
-                      className="animate__animated opt_laptopsmartimg_Inner_b"
-                      src={dairy}
-                    />
-
-                    <div className="animate__animated smallservice">
-                      <h1>Our Services</h1>
-                    </div>
-                  </div> */}
                 </div>
 
                 <img
